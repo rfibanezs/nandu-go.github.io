@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ÑANDU-GO | Movilidad Eléctrica y Justa del Norte de Chile</title>
+    <meta name="description" content="ÑANDU-GO es la primera plataforma de movilidad eléctrica con comisión fija de $11.000 diarios. Tarifa consensuada con sindicatos. Flota 100% eléctrica y plantas fotovoltaicas en el norte de Chile.">
+    <meta name="author" content="Ricardo Francisco Ibañez Sandoval">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1a2a3a;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #0b3b2f 0%, #1a5c4a 100%);
+            color: white;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: #f5c542;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 32px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Botones */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: #f5c542;
+            color: #1a2a3a;
+            box-shadow: 0 4px 12px rgba(245,197,66,0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #e6b42c;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(245,197,66,0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: #1a5c4a;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #0e4d3b 0%, #1a6b54 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .highlight {
+            color: #f5c542;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 32px;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Beneficios */
+        .benefits {
+            padding: 80px 0;
+            background-color: #f8fafc;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #0b3b2f;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #4a5b6e;
+            max-width: 700px;
+            margin: 0 auto 48px;
+            font-size: 1.1rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 32px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            color: #f5c542;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .benefit-card p {
+            color: #4a5b6e;
+        }
+
+        /* Modelo de negocio */
+        .model {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .model-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .model-card {
+            background: #f8fafc;
+            padding: 28px;
+            border-radius: 20px;
+            border-left: 4px solid #f5c542;
+        }
+
+        .model-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+            color: #0b3b2f;
+        }
+
+        .model-card p, .model-card li {
+            color: #4a5b6e;
+        }
+
+        .model-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .model-card li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .model-card i {
+            color: #f5c542;
+            width: 20px;
+        }
+
+        .number-big {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #f5c542;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* Stats */
+        .stats {
+            background: linear-gradient(135deg, #0b3b2f 0%, #1a5c4a 100%);
+            color: white;
+            padding: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #f5c542;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Equipo */
+        .team {
+            padding: 80px 0;
+            background-color: #f8fafc;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .team-info {
+            padding: 32px;
+        }
+
+        .team-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .team-role {
+            color: #f5c542;
+            font-weight: 600;
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+
+        .team-desc {
+            color: #4a5b6e;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .team-title-icon {
+            font-size: 3rem;
+            color: #f5c542;
+            margin-bottom: 16px;
+        }
+
+        /* Roadmap */
+        .roadmap {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            max-width: 800px;
+            margin: 48px auto 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #f5c542;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-date {
+            min-width: 100px;
+            font-weight: 800;
+            color: #f5c542;
+            font-size: 1.1rem;
+        }
+
+        .timeline-content {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 16px;
+            flex: 1;
+        }
+
+        .timeline-content strong {
+            color: #0b3b2f;
+        }
+
+        /* Contacto */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #0b3b2f 0%, #1a5c4a 100%);
+            color: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 48px auto 0;
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            color: #1a2a3a;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #f5c542;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #0b2a22;
+            color: #9bb7ad;
+            padding: 48px 0 24px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #f5c542;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .header .container {
+                flex-direction: column;
+            }
+            .nav a {
+                margin: 0 12px;
+            }
+            .timeline-item {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .timeline::before {
+                left: 0;
+            }
+            .contact-form {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">ÑANDU<span>-GO</span></div>
+            <div class="nav">
+                <a href="#inicio">Inicio</a>
+                <a href="#modelo">Modelo</a>
+                <a href="#impacto">Impacto</a>
+                <a href="#equipo">Equipo</a>
+                <a href="#roadmap">Ruta</a>
+                <a href="#contacto" style="background:#f5c542; color:#1a2a3a; padding:8px 20px; border-radius:40px;">Únete</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section id="inicio" class="hero">
+            <div class="container">
+                <h1>Movilidad Eléctrica y Justa<br>del <span class="highlight">Norte de Chile</span></h1>
+                <p>Comisión fija de <strong>$11.000</strong> al día. El 100% de la tarifa es para el conductor. Tarifa consensuada con los sindicatos de cada región. Flota 100% eléctrica y carga solar gratuita.</p>
+                <div class="hero-buttons">
+                    <a href="#contacto" class="btn btn-primary">Quiero ser conductor</a>
+                    <a href="#modelo" class="btn btn-outline">Conoce el modelo</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beneficios -->
+        <section class="benefits">
+            <div class="container">
+                <h2 class="section-title">¿Por qué ÑANDU-GO?</h2>
+                <p class="section-subtitle">Un modelo pensado por y para los conductores del norte de Chile</p>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                        <h3>Comisión Fija</h3>
+                        <p>$11.000 al día. Si no trabajas, no pagas. Sin costos ocultos.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-car"></i></div>
+                        <h3>Auto Propio</h3>
+                        <p>Los autos eléctricos son de la empresa. Tú solo manejas y ganas.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-solar-panel"></i></div>
+                        <h3>Carga Solar Gratis</h3>
+                        <p>Plantas fotovoltaicas en cada ciudad. Energía del desierto de Atacama.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-users"></i></div>
+                        <h3>Tarifa Consensuada</h3>
+                        <p>La tarifa se define ciudad por ciudad con los sindicatos de conductores.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-gift"></i></div>
+                        <h3>Bonos Trimestrales</h3>
+                        <p>Hasta $500.000 por viajes exitosos. La empresa reparte utilidades.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="fas fa-leaf"></i></div>
+                        <h3>100% Eléctrico</h3>
+                        <p>Flota BYD. Cero emisiones. Compromiso con el medio ambiente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modelo de negocio -->
+        <section id="modelo" class="model">
+            <div class="container">
+                <h2 class="section-title">Modelo de Negocio</h2>
+                <p class="section-subtitle">Transparencia radical. El conductor es el centro.</p>
+                <div class="model-grid">
+                    <div class="model-card">
+                        <h4><i class="fas fa-charging-station"></i> Comisión Fija</h4>
+                        <p><span class="number-big">$11.000</span> por día trabajado</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Si no trabajas, no pagas</li>
+                            <li><i class="fas fa-check-circle"></i> Sin porcentajes ni sorpresas</li>
+                            <li><i class="fas fa-check-circle"></i> Incluye uso del auto eléctrico</li>
+                            <li><i class="fas fa-check-circle"></i> Incluye carga solar gratuita</li>
+                        </ul>
+                    </div>
+                    <div class="model-card">
+                        <h4><i class="fas fa-handshake"></i> Tarifa Consensuada</h4>
+                        <p>Se define <strong>ciudad por ciudad</strong> con los sindicatos</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Copiapó: mesa con Sindicato Greco App Atacama</li>
+                            <li><i class="fas fa-check-circle"></i> La Serena: próximamente</li>
+                            <li><i class="fas fa-check-circle"></i> Coquimbo: próximamente</li>
+                            <li><i class="fas fa-check-circle"></i> El valor por kilómetro lo acuerdan los trabajadores</li>
+                        </ul>
+                    </div>
+                    <div class="model-card">
+                        <h4><i class="fas fa-chart-line"></i> Bonos Trimestrales</h4>
+                        <p>20% de las comisiones vuelven a los conductores</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> 200-399 viajes: $50.000</li>
+                            <li><i class="fas fa-check-circle"></i> 400-699 viajes: $150.000</li>
+                            <li><i class="fas fa-check-circle"></i> 700-999 viajes: $300.000</li>
+                            <li><i class="fas fa-check-circle"></i> 1.000+ viajes: $500.000 + Ñandú de Oro</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impacto económico -->
+        <section id="impacto" class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">32%</div>
+                        <div class="stat-label">Más ingresos que en otras apps</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">$0</div>
+                        <div class="stat-label">Gasto en energía (carga solar)</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">De la tarifa va al conductor</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">85</div>
+                        <div class="stat-label">Afiliados al Sindicato Greco App Atacama</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Equipo -->
+        <section id="equipo" class="team">
+            <div class="container">
+                <h2 class="section-title">Fundador</h2>
+                <p class="section-subtitle">Un profesional con experiencia en el asiento del conductor</p>
+                <div class="team-card">
+                    <div class="team-info">
+                        <div class="team-title-icon"><i class="fas fa-user-circle"></i></div>
+                        <h3 class="team-name">Ricardo Francisco Ibañez Sandoval</h3>
+                        <p class="team-role">Fundador y Propietario</p>
+                        <p class="team-desc">Ingeniero Civil Industrial e Ingeniero de Ejecución en Computación e Informática. Conductor de aplicaciones (1 año). Tesorero del Sindicato Greco App Atacama (fundado el 18 de mayo de 2026).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap -->
+        <section id="roadmap" class="roadmap">
+            <div class="container">
+                <h2 class="section-title">Hoja de Ruta</h2>
+                <p class="section-subtitle">Expansión desde Copiapó hacia todo el norte</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2026 - Q3</div>
+                        <div class="timeline-content">
+                            <strong>Lanzamiento Copiapó</strong><br>
+                            5 autos eléctricos | Planta solar Paipote | Mesa con Sindicato Greco App Atacama para definir tarifa
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2026 - Q4</div>
+                        <div class="timeline-content">
+                            <strong>Expansión La Serena</strong><br>
+                            15 autos | Segunda planta solar | Mesa con sindicatos locales
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2027 - Q1</div>
+                        <div class="timeline-content">
+                            <strong>Expansión Coquimbo</strong><br>
+                            40 autos | Tercera planta solar | Mesa con sindicatos
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2027 - Q4</div>
+                        <div class="timeline-content">
+                            <strong>Consolidación Norte</strong><br>
+                            150 autos | 3 plantas solares | Expansión a Antofagasta y Calama
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section id="contacto" class="contact">
+            <div class="container">
+                <h2 class="section-title" style="color: white;">¿Quieres ser parte?</h2>
+                <p class="section-subtitle" style="color: #cbd5e1;">Déjanos tus datos y te contactaremos cuando lancemos en tu ciudad</p>
+                <div class="contact-form">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="nombre" placeholder="Nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Correo electrónico" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp">
+                        </div>
+                        <div class="form-group">
+                            <select name="ciudad" required>
+                                <option value="">Selecciona tu ciudad</option>
+                                <option value="copiapó">Copiapó</option>
+                                <option value="la serena">La Serena</option>
+                                <option value="coquimbo">Coquimbo</option>
+                                <option value="otra">Otra (especificar abajo)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="mensaje" rows="3" placeholder="¿Eres conductor? ¿Tienes auto propio? ¿Alguna consulta?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; background: #f5c542; color: #1a2a3a;">Enviar</button>
+                    </form>
+                    <p style="text-align: center; margin-top: 24px; font-size: 0.8rem; color: #888;">No compartiremos tus datos. Te contactaremos solo cuando lancemos en tu ciudad.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>ÑANDU-GO ® 2026 - Movilidad Eléctrica y Justa del Norte de Chile</p>
+            <p style="margin-top: 16px; font-size: 0.8rem;">Fundada en Copiapó por Ricardo Francisco Ibañez Sandoval</p>
+            <p style="margin-top: 8px; font-size: 0.75rem;">contacto@ñandu-go.cl | +56 9 XXXX XXXX</p>
+        </div>
+    </footer>
+</body>
+</html>
