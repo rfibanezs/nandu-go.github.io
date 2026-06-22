@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÑANDU-GO | La app de transporte justa y eléctrica del norte</title>
+    <meta name="description" content="Viaja seguro en autos eléctricos con tarifas justas. Descarga ÑANDU-GO, la app de transporte que no abusa con las comisiones.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #1a2a3a;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* HEADER */
+        .header {
+            background: #0b3b2f;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: white;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: #f5c542;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 28px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav a:hover {
+            color: #f5c542;
+        }
+
+        .btn-nav {
+            background: #f5c542;
+            color: #0b3b2f !important;
+            padding: 10px 22px;
+            border-radius: 40px;
+        }
+
+        .btn-nav:hover {
+            background: #e6b42c;
+            color: #0b3b2f !important;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #0e4d3b 0%, #1a6b54 100%);
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .highlight {
+            color: #f5c542;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin: 0 auto 32px;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-download i {
+            font-size: 1.6rem;
+        }
+
+        .btn-apple {
+            background: #000;
+            color: white;
+        }
+
+        .btn-apple:hover {
+            background: #1a1a1a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        .btn-google {
+            background: #f5c542;
+            color: #0b3b2f;
+        }
+
+        .btn-google:hover {
+            background: #e6b42c;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(245,197,66,0.4);
+        }
+
+        /* STATS */
+        .stats-bar {
+            background: #0b2a22;
+            padding: 30px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 24px;
+            text-align: center;
+        }
+
+        .stats-grid .stat-number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #f5c542;
+            display: block;
+        }
+
+        .stats-grid .stat-label {
+            color: #9bb7ad;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* VENTAJAS */
+        .ventajas {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 12px;
+            color: #0b3b2f;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #4a5b6e;
+            max-width: 600px;
+            margin: 0 auto 48px;
+            font-size: 1.05rem;
+        }
+
+        .ventajas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+
+        .ventaja-card {
+            background: white;
+            padding: 32px 24px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+            transition: transform 0.2s ease;
+        }
+
+        .ventaja-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .ventaja-icon {
+            font-size: 2.8rem;
+            color: #f5c542;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .ventaja-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: #0b3b2f;
+        }
+
+        .ventaja-card p {
+            color: #4a5b6e;
+            font-size: 0.95rem;
+        }
+
+        /* COMPARATIVA */
+        .comparativa {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            margin-top: 32px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            min-width: 500px;
+        }
+
+        th, td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid #eef2f6;
+        }
+
+        th {
+            background: #0b3b2f;
+            color: white;
+            font-weight: 700;
+        }
+
+        td:first-child {
+            font-weight: 600;
+        }
+
+        .check {
+            color: #22a67e;
+            font-weight: 700;
+        }
+
+        .cross {
+            color: #e74c3c;
+            font-weight: 700;
+        }
+
+        .highlight-row {
+            background: #f5f9f7;
+            border-left: 4px solid #f5c542;
+        }
+
+        /* TESTIMONIOS */
+        .testimonios {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .testimonios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .testimonio-card {
+            background: white;
+            padding: 28px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .testimonio-card .stars {
+            color: #f5c542;
+            margin-bottom: 12px;
+        }
+
+        .testimonio-card p {
+            color: #1a2a3a;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .testimonio-card .autor {
+            font-weight: 700;
+            color: #0b3b2f;
+        }
+
+        .testimonio-card .ciudad {
+            color: #4a5b6e;
+            font-size: 0.85rem;
+        }
+
+        /* COBERTURA */
+        .cobertura {
+            padding: 60px 0;
+            background: #0b3b2f;
+            color: white;
+            text-align: center;
+        }
+
+        .cobertura h2 {
+            color: white;
+        }
+
+        .ciudades {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px 40px;
+            margin-top: 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .ciudades i {
+            color: #f5c542;
+            margin-right: 8px;
+        }
+
+        /* CTA DESCARGA */
+        .cta-download {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #0e4d3b, #1a6b54);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-download h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .cta-download p {
+            max-width: 500px;
+            margin: 16px auto 32px;
+            opacity: 0.9;
+        }
+
+        .cta-download .btn-download {
+            margin: 0 8px 12px;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #0b2a22;
+            color: #9bb7ad;
+            padding: 40px 0 24px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #f5c542;
+            text-decoration: none;
+        }
+
+        .footer .social {
+            margin: 16px 0;
+        }
+
+        .footer .social a {
+            color: white;
+            margin: 0 12px;
+            font-size: 1.4rem;
+            transition: color 0.2s;
+        }
+
+        .footer .social a:hover {
+            color: #f5c542;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .header .container {
+                flex-direction: column;
+            }
+            .nav a {
+                margin: 0 12px;
+                font-size: 0.85rem;
+            }
+            .btn-download {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+            .ventajas-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="container">
+        <div class="logo">ÑANDU<span>-GO</span></div>
+        <div class="nav">
+            <a href="#ventajas">Ventajas</a>
+            <a href="#comparativa">Compara</a>
+            <a href="#testimonios">Testimonios</a>
+            <a href="#descargar" class="btn-nav">Descargar App</a>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <h1>Viaja en auto eléctrico.<br>Paga <span class="highlight">solo lo justo</span>.</h1>
+        <p>En ÑANDU-GO no hay tarifas que suben sin aviso. El precio lo consensuamos entre todos. Y tú pagas directamente al conductor. Sin comisiones ocultas.</p>
+        <div class="hero-buttons">
+            <a href="#" class="btn-download btn-apple"><i class="fab fa-apple"></i> App Store</a>
+            <a href="#" class="btn-download btn-google"><i class="fab fa-google-play"></i> Google Play</a>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-bar">
+    <div class="container">
+        <div class="stats-grid">
+            <div>
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Tarifa al conductor</span>
+            </div>
+            <div>
+                <span class="stat-number">0%</span>
+                <span class="stat-label">Comisiones abusivas</span>
+            </div>
+            <div>
+                <span class="stat-number">$0</span>
+                <span class="stat-label">Gasto en energía (carga solar)</span>
+            </div>
+            <div>
+                <span class="stat-number">🌱</span>
+                <span class="stat-label">Cero emisiones</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VENTAJAS -->
+<section id="ventajas" class="ventajas">
+    <div class="container">
+        <h2 class="section-title">¿Por qué viajar con ÑANDU-GO?</h2>
+        <p class="section-subtitle">Seis razones para hacer el cambio hoy</p>
+        <div class="ventajas-grid">
+            <div class="ventaja-card">
+                <span class="ventaja-icon"><i class="fas fa-hand-holding-usd"></i></span>
+                <h3>Precio justo y claro</h3>
+                <p>El valor del viaje se consensúa entre el pasajero y el conductor. No hay tarifas dinámicas que suben sin aviso.</p>
+            </div>
+            <div class="ventaja-card">
+                <span class="ventaja-icon"><i class="fas fa-car"></i></span>
+                <h3>Autos eléctricos</h3>
+                <p>Flota 100% eléctrica. Viajas limpio, sin contaminación y en silencio. El futuro de la movilidad ya llegó al norte.</p>
+            </div>
+            <div class="ventaja-card">
+                <span class="ventaja-icon"><i class="fas fa-solar-panel"></i></span>
+                <h3>Energía solar 100%</h3>
+                <p>Nuestros autos cargan con energía del desierto de Atacama. Viajas con el sol del norte, sin huella de carbono.</p>
+            </div>
+            <div class="ventaja-card">
+                <span class="ventaja-icon"><i class="fas fa-shield-alt"></i></span>
+                <h3>Seguro y confiable</h3>
+                <p>Todos nuestros conductores están verificados. Viaja con la tranquilidad de saber quién te lleva.</p>
+            </div>
+            <div class="ventaja-card">
+                <span class="ventaja-icon"><i class="fas fa-handshake"></i></span>
+                <h3>Justicia social</h3>
+                <p>El 100% de la tarifa va al conductor. Sin comisiones abusivas. Apoyas una empresa que valora a sus trabajadores.</p>
+            </div>
+            <div class="ventaja-card">
+                <span class="ventaja-icon"><i class="fas fa-leaf"></i></span>
+                <h3>Compromiso con el norte</h3>
+                <p>Somos de Copiapó. Conocemos nuestras calles, nuestra gente y nuestras necesidades. No somos una app de afuera.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPARATIVA -->
+<section id="comparativa" class="comparativa">
+    <div class="container">
+        <h2 class="section-title">¿Cómo nos comparamos?</h2>
+        <p class="section-subtitle">ÑANDU-GO vs. las apps tradicionales</p>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>ÑANDU-GO</th>
+                        <th>Uber</th>
+                        <th>Didi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tarifa justa y consensuada</td>
+                        <td class="check">✅ Sí</td>
+                        <td class="cross">❌ Algoritmo</td>
+                        <td class="cross">❌ Algoritmo</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td>Comisión al conductor</td>
+                        <td class="check"><strong>Fija $11.000/día</strong></td>
+                        <td class="cross">25-30% por viaje</td>
+                        <td class="cross">20-25% por viaje</td>
+                    </tr>
+                    <tr>
+                        <td>Autos eléctricos</td>
+                        <td class="check">✅ 100%</td>
+                        <td class="cross">❌ Mayoría térmicos</td>
+                        <td class="cross">❌ Mayoría térmicos</td>
+                    </tr>
+                    <tr>
+                        <td>Carga solar gratuita</td>
+                        <td class="check">✅ Sí</td>
+                        <td class="cross">❌</td>
+                        <td class="cross">❌</td>
+                    </tr>
+                    <tr>
+                        <td>Empresa chilena del norte</td>
+                        <td class="check">✅ Sí</td>
+                        <td class="cross">❌ Extranjera</td>
+                        <td class="cross">❌ Extranjera</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="testimonios" class="testimonios">
+    <div class="container">
+        <h2 class="section-title">Lo que dicen nuestros pasajeros</h2>
+        <p class="section-subtitle">Experiencias reales de usuarios en el norte de Chile</p>
+        <div class="testimonios-grid">
+            <div class="testimonio-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Me encanta que el precio se negocie. No hay sorpresas al final del viaje. Y saber que el auto es eléctrico me hace sentir que contribuyo al medio ambiente."</p>
+                <span class="autor">María José R.</span>
+                <span class="ciudad">— Copiapó</span>
+            </div>
+            <div class="testimonio-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Prefiero ÑANDU-GO porque sé que el conductor recibe el 100% de la tarifa. Me parece justo. Ojalá todas las apps fueran así."</p>
+                <span class="autor">Carlos A.</span>
+                <span class="ciudad">— La Serena</span>
+            </div>
+            <div class="testimonio-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Los autos son nuevos, silenciosos y muy cómodos. Además, me encanta que sea una empresa de Copiapó. Apoyar lo nuestro."</p>
+                <span class="autor">Claudia F.</span>
+                <span class="ciudad">— Coquimbo</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COBERTURA -->
+<section class="cobertura">
+    <div class="container">
+        <h2 class="section-title" style="color:white;">📍 Ya estamos en el norte</h2>
+        <div class="ciudades">
+            <span><i class="fas fa-map-marker-alt"></i> Copiapó</span>
+            <span><i class="fas fa-map-marker-alt"></i> La Serena</span>
+            <span><i class="fas fa-map-marker-alt"></i> Coquimbo</span>
+            <span><i class="fas fa-map-marker-alt"></i> Próximamente más ciudades</span>
+        </div>
+    </div>
+</section>
+
+<!-- CTA DESCARGA -->
+<section id="descargar" class="cta-download">
+    <div class="container">
+        <h2>Descarga la app y únete al cambio</h2>
+        <p>ÑANDU-GO está disponible para iOS y Android. Elige un transporte más justo, limpio y cercano.</p>
+        <div class="hero-buttons">
+            <a href="#" class="btn-download btn-apple"><i class="fab fa-apple"></i> App Store</a>
+            <a href="#" class="btn-download btn-google"><i class="fab fa-google-play"></i> Google Play</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="social">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>© 2026 ÑANDU-GO · Movilidad eléctrica y justa del norte de Chile</p>
+        <p style="margin-top: 8px; font-size: 0.8rem;">Fundada en Copiapó por Ricardo Francisco Ibañez Sandoval</p>
+        <p style="margin-top: 4px; font-size: 0.75rem;">
+            <a href="#">Política de privacidad</a> · 
+            <a href="#">Términos de servicio</a> · 
+            <a href="mailto:contacto@ñandu-go.cl">contacto@ñandu-go.cl</a>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
