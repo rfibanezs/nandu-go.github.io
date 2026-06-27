@@ -673,8 +673,61 @@
                 </div>
             </div>
         </section>
-
+<!-- ============================================================ -->
+<!-- FORMULARIO DE CONTACTO - Envía a rfibanezs@gmail.com          -->
+<!-- ============================================================ -->
+<section id="contacto" class="contact">
+    <div class="container">
+        <h2 class="section-title" style="color: white;">¿Quieres ser parte?</h2>
+        <p class="section-subtitle" style="color: #cbd5e1;">Déjanos tus datos y te contactaremos cuando lancemos en tu ciudad</p>
+        
+        <div class="contact-form">
+            <!-- ¡AQUÍ ESTÁ EL CAMBIO! action apunta a Formspree -->
+            <form action="https://formspree.io/f/meebando" method="POST">
+                
+                <!-- Campo oculto para identificar el origen del mensaje -->
+                <input type="hidden" name="_subject" value="Nuevo lead desde Landing Page ÑANDU-GO">
+                
+                <!-- Prevenir que Formspree muestre su propia página de gracias -->
+                <input type="hidden" name="_redirect" value="https://nandu-go.github.io/gracias.html">
+                
+                <div class="form-group">
+                    <input type="text" name="nombre" placeholder="Nombre completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Correo electrónico" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp">
+                </div>
+                <div class="form-group">
+                    <select name="ciudad" required>
+                        <option value="">Selecciona tu ciudad</option>
+                        <option value="copiapó">Copiapó</option>
+                        <option value="la serena">La Serena</option>
+                        <option value="coquimbo">Coquimbo</option>
+                        <option value="otra">Otra (especificar abajo)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea name="mensaje" rows="3" placeholder="¿Eres conductor? ¿Tienes auto propio? ¿Alguna consulta?"></textarea>
+                </div>
+                
+                <!-- Botón de envío -->
+                <button type="submit" class="btn btn-primary" style="width: 100%; background: #f5c542; color: #1a2a3a;">
+                    Enviar
+                </button>
+            </form>
+            
+            <p style="text-align: center; margin-top: 24px; font-size: 0.8rem; color: #888;">
+                No compartiremos tus datos. Te contactaremos solo cuando lancemos en tu ciudad.
+            </p>
+        </div>
+    </div>
+</section>
         <!-- Contacto -->
+        <!--
+        
         <section id="contacto" class="contact">
             <div class="container">
                 <h2 class="section-title" style="color: white;">¿Quieres ser parte?</h2>
@@ -708,6 +761,7 @@
                 </div>
             </div>
         </section>
+        -->
     </main>
 
     <footer class="footer">
